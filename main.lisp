@@ -1,5 +1,5 @@
 (defpackage #:cl-hackery
-  (:use #:cl-user #:cffi)
+  (:use #:cl #:cffi)
   (:export
    #:run))
 
@@ -31,4 +31,5 @@
 	(setf (mem-ref my-double :double) 1.414d0)
 	(let ((retval (jcm-process-doubles my-double)))
 	  (format t "Access pointer to double: ~A~%" (mem-ref my-double :double))
-	  (format t "Access retval double: ~A~%" (mem-ref retval :double)))))
+	  ;;(format t "Access retval double: ~A~%" (mem-ref retval :double))
+      )))
