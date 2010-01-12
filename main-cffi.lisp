@@ -1,7 +1,7 @@
 (defpackage #:cl-hackery
   (:use #:cl #:cffi)
   (:export
-   #:run))
+   #:run-cffi))
 
 (in-package #:cl-hackery)
 
@@ -19,7 +19,7 @@
 (defcfun "jcm_access_string" :int (p :pointer))
 (defcfun "jcm_process_doubles" :double (d :pointer))
 
-(defun run ()
+(defun run-cffi ()
   (format t "Do nothing: ~A~%" (jcm-do-nothing))
   (format t "Return int: ~A~%" (jcm-return-int))
   (format t "Process int: ~A~%" (jcm-process-int 88))
