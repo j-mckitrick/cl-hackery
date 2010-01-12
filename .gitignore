@@ -1,1 +1,5 @@
 *.fasl
+*.dylib
+*.cmake
+lib/cfunctions/CMakeFiles/
+lib/cfunctions/CMakeCache.txt
