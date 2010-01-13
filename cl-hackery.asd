@@ -1,5 +1,8 @@
 (defsystem cl-hackery
   :description "Try lots of cool lisp stuff."
   :components
-  ((:file "main-cffi"))
-  :depends-on (cffi))
+  ((:file "defpackage")
+   (:file "main-cffi")
+   (:file "main-list"))
+  :serial t
+  :depends-on (:cffi))

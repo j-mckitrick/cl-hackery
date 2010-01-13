@@ -1,8 +1,3 @@
-(defpackage #:cl-hackery
-  (:use #:cl #:cffi)
-  (:export
-   #:run-cffi))
-
 (in-package #:cl-hackery)
 
 (declaim (optimize debug))
