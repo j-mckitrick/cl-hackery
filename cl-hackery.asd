@@ -1,4 +1,4 @@
-(defsystem cl-hackery
+(defsystem #:cl-hackery
   :description "Try lots of cool lisp stuff."
   :components
   ((:file "defpackage")
