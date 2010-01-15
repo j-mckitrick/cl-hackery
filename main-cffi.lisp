@@ -7,12 +7,20 @@
 
 (use-foreign-library libjcm)
 
+(defcstruct jcm-struct
+  "Structure from jcm library."
+  (the-int :int)
+  (the-char :char)
+  (the-float :float)
+  (the-buffer :pointer))
+
 (defcfun "jcm_do_nothing" :void)
 (defcfun "jcm_return_int" :int)
 (defcfun "jcm_process_int" :int (i :int))
 (defcfun "jcm_access_pointer" :pointer (p :pointer))
 (defcfun "jcm_access_string" :int (p :pointer))
 (defcfun "jcm_process_doubles" :double (d :pointer))
+(defcfun "jcm_process_struct" :void (s :pointer) (i :int) (c :char) (f :float))
 
 (defun run-simple-returns ()
   (format t "Do nothing: ~A~%" (jcm-do-nothing))
@@ -38,7 +46,18 @@
 	  (format t "After access pointer to double: ~A~%" (mem-ref my-double :double))
       (format t "Double retval: ~A~%" retval))))
 
+(defun run-structs ()
+  (with-foreign-object (my-struct 'jcm-struct)
+    (setf (foreign-slot-value my-struct 'jcm-struct 'the-int) 42
+          (foreign-slot-value my-struct 'jcm-struct 'the-char) (char-code (char "z" 0))
+          (foreign-slot-value my-struct 'jcm-struct 'the-float) 3.0)
+    (jcm-process-struct my-struct 99 (char-code (char "a" 0)) 2.0)
+    (format t "After access pointer to struct: ~A~%" (foreign-slot-value my-struct 'jcm-struct 'the-int))
+    (format t "After access pointer to struct: ~A~%" (foreign-slot-value my-struct 'jcm-struct 'the-char))
+    (format t "After access pointer to struct: ~A~%" (foreign-slot-value my-struct 'jcm-struct 'the-float))))
+
 (defun run-cffi ()
   (run-simple-returns)
   (run-strings)
-  (run-pointers))
+  (run-pointers)
+  (run-structs))
