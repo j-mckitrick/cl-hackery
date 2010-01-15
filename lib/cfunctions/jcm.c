@@ -39,3 +39,13 @@ double jcm_process_doubles(double *d)
 
 	return e;
 }
+
+void jcm_process_struct(struct jcm_struct *s,
+						int an_int,
+						char a_char,
+						float a_float)
+{
+	s->the_int = an_int;
+	s->the_char = a_char;
+	s->the_float = a_float;
+}
