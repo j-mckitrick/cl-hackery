@@ -1,7 +1,6 @@
 /* Implementations */
 
 #include "jcm.h"
-#include <string.h>
 
 void jcm_do_nothing()
 {
@@ -48,4 +47,14 @@ void jcm_process_struct(struct jcm_struct *s,
 	s->the_int = an_int;
 	s->the_char = a_char;
 	s->the_float = a_float;
+}
+
+char *jcm_return_dynamic()
+{
+	char *my_ptr;
+	my_ptr = (char *)malloc(4);
+
+	*my_ptr = 'X';
+
+	return my_ptr;
 }

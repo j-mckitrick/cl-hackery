@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <string.h>
+
 /* Declarations */
 
 struct jcm_struct
@@ -15,3 +18,4 @@ void jcm_access_pointer(int *);
 int jcm_access_string(char *);
 double jcm_process_doubles(double *);
 void jcm_process_struct(struct jcm_struct *, int, char, float);
+char *jcm_return_dynamic();

@@ -21,6 +21,7 @@
 (defcfun "jcm_access_string" :int (p :pointer))
 (defcfun "jcm_process_doubles" :double (d :pointer))
 (defcfun "jcm_process_struct" :void (s :pointer) (i :int) (c :char) (f :float))
+(defcfun "jcm_return_dynamic" :pointer)
 
 (defun run-simple-returns ()
   (format t "Do nothing: ~A~%" (jcm-do-nothing))
@@ -44,7 +45,9 @@
     (format t "Before access pointer to double: ~A~%" (mem-ref my-double :double))
 	(let ((retval (jcm-process-doubles my-double)))
 	  (format t "After access pointer to double: ~A~%" (mem-ref my-double :double))
-      (format t "Double retval: ~A~%" retval))))
+      (format t "Double retval: ~A~%" retval)))
+  (let ((retval (jcm-return-dynamic)))
+    (format t "Returned pointer value: ~A~%" (mem-ref retval :char))))
 
 (defun run-structs ()
   (with-foreign-object (my-struct 'jcm-struct)
