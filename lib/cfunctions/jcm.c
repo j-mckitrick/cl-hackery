@@ -58,3 +58,9 @@ char *jcm_return_dynamic()
 
 	return my_ptr;
 }
+
+void jcm_free_dynamic(char *ptr)
+{
+	*ptr = 0;
+	free(ptr);
+}

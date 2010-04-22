@@ -22,6 +22,7 @@
 (defcfun "jcm_process_doubles" :double (d :pointer))
 (defcfun "jcm_process_struct" :void (s :pointer) (i :int) (c :char) (f :float))
 (defcfun "jcm_return_dynamic" :pointer)
+(defcfun "jcm_free_dynamic" :void (p :pointer))
 
 (defun run-simple-returns ()
   (format t "Do nothing: ~A~%" (jcm-do-nothing))
@@ -47,7 +48,9 @@
 	  (format t "After access pointer to double: ~A~%" (mem-ref my-double :double))
       (format t "Double retval: ~A~%" retval)))
   (let ((retval (jcm-return-dynamic)))
-    (format t "Returned pointer value: ~A~%" (mem-ref retval :char))))
+    (format t "Returned pointer value: ~A~%" (mem-ref retval :char))
+    (jcm-free-dynamic retval)
+    (format t "Pointer freed: ~A~%" (mem-ref retval :char))))
 
 (defun run-structs ()
   (with-foreign-object (my-struct 'jcm-struct)
@@ -56,7 +59,7 @@
           (foreign-slot-value my-struct 'jcm-struct 'the-float) 3.0)
     (jcm-process-struct my-struct 99 (char-code (char "a" 0)) 2.0)
     (format t "After access pointer to struct: ~A~%" (foreign-slot-value my-struct 'jcm-struct 'the-int))
-    (format t "After access pointer to struct: ~A~%" (foreign-slot-value my-struct 'jcm-struct 'the-char))
+    (format t "After access pointer to struct: ~A~%" (code-char (foreign-slot-value my-struct 'jcm-struct 'the-char)))
     (format t "After access pointer to struct: ~A~%" (foreign-slot-value my-struct 'jcm-struct 'the-float))))
 
 (defun run-cffi ()

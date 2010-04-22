@@ -19,3 +19,4 @@ int jcm_access_string(char *);
 double jcm_process_doubles(double *);
 void jcm_process_struct(struct jcm_struct *, int, char, float);
 char *jcm_return_dynamic();
+void jcm_free_dynamic(char *ptr);
