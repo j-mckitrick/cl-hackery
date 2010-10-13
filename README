@@ -1,1 +1,13 @@
 This project will be a proof-of-concepts for testing new ideas with Common Lisp.
+
+git notes:
+- init
+- add
+- commit
+- log
+- status
+- diff
+- mv, rm
+- branch [-d] [name]
+- checkout (branch)
+- merge, pull
