@@ -57,6 +57,9 @@
     (setf (foreign-slot-value my-struct 'jcm-struct 'the-int) 42
           (foreign-slot-value my-struct 'jcm-struct 'the-char) (char-code (char "z" 0))
           (foreign-slot-value my-struct 'jcm-struct 'the-float) 3.0)
+    (format t "Before access pointer to struct: ~A~%" (foreign-slot-value my-struct 'jcm-struct 'the-int))
+    (format t "Before access pointer to struct: ~A~%" (code-char (foreign-slot-value my-struct 'jcm-struct 'the-char)))
+    (format t "Before access pointer to struct: ~A~%" (foreign-slot-value my-struct 'jcm-struct 'the-float))
     (jcm-process-struct my-struct 99 (char-code (char "a" 0)) 2.0)
     (format t "After access pointer to struct: ~A~%" (foreign-slot-value my-struct 'jcm-struct 'the-int))
     (format t "After access pointer to struct: ~A~%" (code-char (foreign-slot-value my-struct 'jcm-struct 'the-char)))
