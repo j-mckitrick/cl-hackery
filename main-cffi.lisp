@@ -2,9 +2,7 @@
 
 (declaim (optimize debug))
 
-(define-foreign-library libjcm
-  (t (:default "/Users/jmckitrick/devel/cl-hackery/lib/cfunctions/libcfunctions")))
-
+(define-foreign-library libjcm (t (:default "libjcm")))
 (use-foreign-library libjcm)
 
 (defcstruct jcm-struct
