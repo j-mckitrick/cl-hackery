@@ -2,6 +2,7 @@
 
 (declaim (optimize debug))
 
+;;; Requires library to be in correct location.
 (define-foreign-library libjcm (t (:default "libjcm")))
 (use-foreign-library libjcm)
 
