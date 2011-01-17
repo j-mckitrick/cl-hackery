@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* Declarations */
-
 struct jcm_struct
 {
 	int the_int;

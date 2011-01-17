@@ -1,5 +1,3 @@
-/* Implementations */
-
 #include "jcm.h"
 
 void jcm_do_nothing()
