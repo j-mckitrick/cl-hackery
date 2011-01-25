@@ -31,7 +31,7 @@
 (defun run-strings ()
   (with-foreign-string (buf "Hello, world!")
     (format t "Before access string: ~A~%" (foreign-string-to-lisp buf))
-	(jcm-access-string buf)
+	(format t "Return value from string function: ~A~%" (jcm-access-string buf))
 	(format t "After access string: ~A~%" (foreign-string-to-lisp buf))))
 
 (defun run-pointers ()
