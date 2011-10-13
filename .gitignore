@@ -1,6 +1,6 @@
 *.fasl
-*.dylib
-*.cmake
-lib/cfunctions/Makefile
-lib/cfunctions/CMakeFiles/
-lib/cfunctions/CMakeCache.txt
+#*.dylib
+#*.cmake
+#lib/cfunctions/Makefile
+#lib/cfunctions/CMakeFiles/
+#lib/cfunctions/CMakeCache.txt
